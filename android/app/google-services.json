@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "292469092681",
+    "project_id": "inventur-9779b",
+    "storage_bucket": "inventur-9779b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292469092681:android:fab5ad71a0b11988772a98",
+        "android_client_info": {
+          "package_name": "com.example.inventur"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRYS3PTH1RMec8RZvayBYsTbqCutrKO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292469092681:android:bf04bf8c3eab116f772a98",
+        "android_client_info": {
+          "package_name": "com.example.lojatecharchitectures"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRYS3PTH1RMec8RZvayBYsTbqCutrKO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292469092681:android:500af6f970f287f0772a98",
+        "android_client_info": {
+          "package_name": "com.lojatech.inventur"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRYS3PTH1RMec8RZvayBYsTbqCutrKO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
