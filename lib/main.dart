@@ -1,58 +1,48 @@
+import 'package:inventur/screens/gestionarAlmacen.dart';
+import 'package:inventur/screens/home_screen.dart';
+import 'package:inventur/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:inventur/models/proveedor.dart';
-
+import 'package:inventur/screens/register.dart';
+import 'package:inventur/screens/splash_screen.dart';
 import 'firebase_options.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyHomePage());
+  runApp(const MyApp());
 }
 
-class MyHomePage extends StatelessWidget {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  Future<void> addDocument() async {
-    // Reference to a Firestore collection
-    CollectionReference collection = firestore.collection('proveedores');
-
-    // Add a document to the collection
-    Proveedor quit = Proveedor(
-        idProveedor: "110001",
-        nombre: "Quituizaca Prov",
-        cedula: "110001",
-        correo: "quituizaca@gmail.com",
-        nombreContacto: "nombreContactotesting");
-
-    try {
-      await collection.doc(quit.idProveedor).set(quit.toJson());
-      print('Supplier added successfully');
-    } catch (e) {
-      print('Error adding supplier: $e');
-    }
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme = Theme.of(context).textTheme;
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Firebase Document Storage'),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/splash',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(48, 153, 161, 1),
+          brightness: Brightness.light,
         ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              addDocument(); // Call the function to add a document
-            },
-            child: Text('Add Document'),
-          ),
+        textTheme: GoogleFonts.latoTextTheme(TextTheme).copyWith(
+          bodyMedium: GoogleFonts.oswald(textStyle: TextTheme.bodyMedium),
         ),
       ),
+      routes: {
+        '/splash': (_) => const SplashScreen(),
+        '/login': (_) => const Login(),
+        '/register': (_) => const RegisterScreen(),
+        '/home': (_) => const HomeScreen(),
+        '/gestionarAlmacen': (_) => GestionarAlmacen(),
+      },
+      home: const Login(),
     );
   }
 }
