@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Theme(
         data: ThemeData(
-          canvasColor: const Color.fromRGBO(48, 153, 161, 1),
+          canvasColor: Color.fromRGBO(48, 153, 161, 1),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -40,8 +40,19 @@ class HomeScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
           onTap: (index) {
-            if (index == 0) {
-              Navigator.pushReplacementNamed(context, '/home');
+            switch (index) {
+              case 0:
+                Navigator.pushReplacementNamed(context, '/home');
+                break;
+              case 1:
+                Navigator.pushReplacementNamed(context, '/Proceso');
+                break;
+              case 2:
+                Navigator.pushReplacementNamed(context, '/Opciones');
+                break;
+              case 3:
+                Navigator.pushReplacementNamed(context, '/gestionarAlmacen');
+                break;
             }
           },
           items: const [

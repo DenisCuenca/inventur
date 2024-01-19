@@ -4,6 +4,7 @@ import 'package:inventur/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:inventur/screens/opciones.dart';
 import 'package:inventur/screens/register.dart';
 import 'package:inventur/screens/splash_screen.dart';
 import 'firebase_options.dart';
@@ -39,8 +40,9 @@ class MyApp extends StatelessWidget {
         '/splash': (_) => const SplashScreen(),
         '/login': (_) => const Login(),
         '/register': (_) => const RegisterScreen(),
-        '/home': (_) => const HomeScreen(),
-        '/gestionarAlmacen': (_) => GestionarAlmacen(),
+        '/home': (context) => HomeScreen(),
+        '/Opciones': (context) => OpcionesScreen(),
+        '/gestionarAlmacen': (context) => GestionarAlmacen(),
       },
       home: const Login(),
     );
