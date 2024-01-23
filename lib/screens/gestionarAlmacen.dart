@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inventur/screens/DetailsProduct.dart';
 
 class GestionarAlmacen extends StatefulWidget {
   const GestionarAlmacen({Key? key}) : super(key: key);
@@ -51,6 +52,40 @@ class _GestionarAlmacenState extends State<GestionarAlmacen> {
               producto['categoria'].toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
+  }
+
+  void _modificarProducto(int productoIndex) {
+    // Obtén los detalles del producto seleccionado
+    Map<String, dynamic> productoMap = _filteredProductos[productoIndex];
+
+    // Convierte el mapa a un objeto Producto
+    Producto producto = Producto(
+      id: productoMap['id'].toString(),
+      categoria: productoMap['categoria'],
+      codigo: productoMap['codigo'],
+      nombre: productoMap['nombre'],
+      fechaCaducidad: DateTime.parse(productoMap['fechaCaducidad']),
+      descripcion: productoMap['descripcion'],
+      fechaElaboracion: DateTime.parse(productoMap['fechaElaboracion']),
+      precio: productoMap['precio'].toDouble(),
+      cantidad: productoMap['cantidad'],
+      bodega: productoMap['bodega'],
+      proveedor: productoMap['proveedor'],
+    );
+
+    // Navega a DetailsProduct pasando los detalles como argumento
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailsProduct(producto: producto),
+      ),
+    );
+  }
+
+  void _guardarCambios() {
+    // Lógica para guardar los cambios
+    // Puedes actualizar la lista de productos con los cambios realizados
+    print("Guardar cambios");
   }
 
   @override
@@ -121,6 +156,26 @@ class _GestionarAlmacenState extends State<GestionarAlmacen> {
                     .toList(),
               ),
             ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (_filteredProductos.isNotEmpty) {
+                    _modificarProducto(0);
+                  }
+                },
+                child: Text('Modificar'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _guardarCambios();
+                },
+                child: Text('Guardar'),
+              ),
+            ],
           ),
         ],
       ),
